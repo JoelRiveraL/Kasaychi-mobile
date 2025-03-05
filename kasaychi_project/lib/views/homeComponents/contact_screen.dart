@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-
 class ContactPage extends StatefulWidget {
+  const ContactPage({super.key});
+
   @override
   _ContactPageState createState() => _ContactPageState();
 }
@@ -18,7 +19,7 @@ class _ContactPageState extends State<ContactPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Contact Me'),
+        title: const Text('Contact Me'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -29,7 +30,7 @@ class _ContactPageState extends State<ContactPage> {
               // Full Name input
               TextFormField(
                 controller: _nameController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Full Name',
                   border: OutlineInputBorder(),
                 ),
@@ -40,11 +41,11 @@ class _ContactPageState extends State<ContactPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               // Email Address input
               TextFormField(
                 controller: _emailController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Email Address',
                   border: OutlineInputBorder(),
                 ),
@@ -55,12 +56,12 @@ class _ContactPageState extends State<ContactPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               // Mobile Number input
               TextFormField(
                 controller: _phoneController,
                 keyboardType: TextInputType.phone,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Mobile Number',
                   border: OutlineInputBorder(),
                 ),
@@ -71,11 +72,11 @@ class _ContactPageState extends State<ContactPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               // Email Subject input
               TextFormField(
                 controller: _subjectController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Email Subject',
                   border: OutlineInputBorder(),
                 ),
@@ -86,12 +87,12 @@ class _ContactPageState extends State<ContactPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               // Message input
               TextFormField(
                 controller: _messageController,
                 maxLines: 5,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Your Message',
                   border: OutlineInputBorder(),
                 ),
@@ -102,21 +103,22 @@ class _ContactPageState extends State<ContactPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               // Submit Button
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // Process the data (you can send it to your server here)
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text('Message Sent')));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Message Sent')));
                   }
                 },
-                child: Text('Send Message'),
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 15), backgroundColor: Colors.green,
-                  textStyle: TextStyle(fontSize: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  backgroundColor: Colors.green,
+                  textStyle: const TextStyle(fontSize: 16),
                 ),
+                child: Text('Send Message'),
               ),
             ],
           ),

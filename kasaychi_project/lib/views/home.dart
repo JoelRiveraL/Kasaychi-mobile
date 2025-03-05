@@ -5,6 +5,7 @@ import 'package:kasaychi_project/views/homeComponents/activity_screen.dart';
 import 'package:kasaychi_project/views/homeComponents/contact_screen.dart';
 import 'package:kasaychi_project/views/homeComponents/multimedia_screen.dart';
 import 'package:kasaychi_project/views/homeComponents/products_screen.dart';
+import 'package:kasaychi_project/views/homeComponents/map_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -35,8 +36,10 @@ class HomeScreen extends StatelessWidget {
             ),
             ListTile(
               title: const Text("Actividades"),
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ActivitiesScreen())),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ActivitiesScreen())),
             ),
             ListTile(
               title: const Text("Productos"),
@@ -47,15 +50,18 @@ class HomeScreen extends StatelessWidget {
             ),
             ListTile(
               title: const Text("Multimedia"),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MultimediaSection())),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MultimediaSection())),
             ),
             ListTile(
               title: const Text("Contáctanos"),
               onTap: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ContactPage())),
+            ),
+            ListTile(
+              title: const Text("Mapa"),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MultiMapScreen())),
             ),
           ],
         ),

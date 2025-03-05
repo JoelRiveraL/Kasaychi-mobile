@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class MultimediaSection extends StatefulWidget {
+  const MultimediaSection({super.key});
+
   @override
   _MultimediaSectionState createState() => _MultimediaSectionState();
 }
@@ -12,14 +14,14 @@ class _MultimediaSectionState extends State<MultimediaSection> {
 
   void changeMainVideo(String url) {
     setState(() {
-      videoUrl = url; // Cambiar URL al de la miniatura seleccionada
+      videoUrl = url;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Our Multimedia')),
+      appBar: AppBar(title: const Text('Our Multimedia')),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -39,9 +41,8 @@ class _MultimediaSectionState extends State<MultimediaSection> {
                 height: 250,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  image: DecorationImage(
-                    image: AssetImage(
-                        'assets/images/OIP.jpeg'),
+                  image: const DecorationImage(
+                    image: AssetImage('assets/images/OIP.jpeg'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -120,7 +121,7 @@ class _MultimediaSectionState extends State<MultimediaSection> {
   Widget _buildMediaGrid() {
     return GridView.builder(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 10,
@@ -142,14 +143,14 @@ class _MultimediaSectionState extends State<MultimediaSection> {
           fit: BoxFit.cover,
         ),
       ),
-      child: Stack(
+      child: const Stack(
         children: [
           Positioned(
             bottom: 8,
             left: 8,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
                   'Título del Video',
                   style: TextStyle(
