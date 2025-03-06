@@ -5,9 +5,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class ReviewsScreen extends StatefulWidget {
   final String siteId;
-    final AuthService? authService; // Hacerlo opcional para pruebas
+  final AuthService? authService;
+  final FirebaseFirestore? firestore; // Nuevo parámetro opcional
 
-  const ReviewsScreen({super.key, required this.siteId, this.authService});
+  const ReviewsScreen({
+    super.key,
+    required this.siteId,
+    this.authService,
+    this.firestore,
+  });
 
   @override
   _ReviewsScreenState createState() => _ReviewsScreenState();
@@ -16,27 +22,29 @@ class ReviewsScreen extends StatefulWidget {
 class _ReviewsScreenState extends State<ReviewsScreen> {
   final _commentController = TextEditingController();
   late final AuthService _authService;
+  late final FirebaseFirestore _firestore; // Variable para Firestore
   int _rating = 5;
 
   @override
   void initState() {
     super.initState();
-    _authService = widget.authService ?? AuthService(); // Usa el proporcionado o crea uno
+    _authService = widget.authService ?? AuthService();
+    _firestore = widget.firestore ?? FirebaseFirestore.instance; // Usa el proporcionado o el default
   }
-  
+
   Future<void> _submitReview() async {
     if (_authService.currentUser != null) {
-      await FirebaseFirestore.instance.collection('reviews').add({
+      await _firestore.collection('reviews').add({
         'siteId': widget.siteId,
         'userId': _authService.currentUser!.uid,
         'userName': _authService.currentUser!.displayName ?? 'Anónimo',
         'comment': _commentController.text,
-        'rating': _rating, //
+        'rating': _rating,
         'timestamp': FieldValue.serverTimestamp(),
       });
       _commentController.clear();
       setState(() {
-        _rating = 5; // 
+        _rating = 5;
       });
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -47,7 +55,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
     } else {
       User? user = await _authService.signInWithGoogle();
       if (user != null) {
-        setState(() {}); 
+        setState(() {});
       }
     }
   }
@@ -73,12 +81,12 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
         ],
       ),
       body: Container(
-        color: const Color.fromARGB(255, 242, 242, 242), // Fondo gris claro
+        color: const Color.fromARGB(255, 242, 242, 242),
         child: Column(
           children: [
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
+                stream: _firestore // Usa _firestore en lugar de FirebaseFirestore.instance
                     .collection('reviews')
                     .where('siteId', isEqualTo: widget.siteId)
                     .orderBy('timestamp', descending: true)
@@ -172,7 +180,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                           ),
                           onPressed: () {
                             setState(() {
-                              _rating = index + 1; // Actualiza la calificación
+                              _rating = index + 1;
                             });
                           },
                         );
