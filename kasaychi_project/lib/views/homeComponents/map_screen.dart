@@ -29,7 +29,7 @@ class MultiMapScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mapas"),
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(255, 255, 102, 0),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -47,7 +47,7 @@ class MultiMapScreen extends StatelessWidget {
                   Container(
                     height: 300,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.green, width: 2),
+                      border: Border.all(color: Color.fromARGB(255, 255, 102, 0), width: 2),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: FlutterMap(

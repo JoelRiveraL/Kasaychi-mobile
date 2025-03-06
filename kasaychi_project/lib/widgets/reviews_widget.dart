@@ -93,27 +93,9 @@ class ReviewsWidget extends StatelessWidget {
                             ),
                           );
                         },
-                        child: const Text('Ver todas las reseñas'),
+                        child: const Text('Ver todas las reseñas/ Enviar Mensaje'),
                       ),
-                    const SizedBox(width: 10),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 255, 102, 0),
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ReviewsScreen(siteId: siteId),
-                          ),
-                        );
-                      },
-                      child: const Text('Dejar una reseña'),
-                    ),
+                    
                   ],
                 ),
               ],
