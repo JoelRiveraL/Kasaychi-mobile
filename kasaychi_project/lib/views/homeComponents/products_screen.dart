@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:kasaychi_project/views/homeComponents/interactiveImageCard.dart';
 
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({super.key});
@@ -6,102 +8,107 @@ class ProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Nuestros Productos")),
-      body: SingleChildScrollView(
-        // Make the body scrollable
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 242, 242, 242),
+        toolbarHeight: 85,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // Título de la sección
-            const Text(
-              "Actividades Económicas\nNuestros Productos",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            Image.asset(
+              "assets/images/KasaychiKunapak.png",
+              width: 65,
+              height: 65,
             ),
-            const SizedBox(height: 20),
-
-            // Descripción de la sección
-            const Text(
-              "Gracias al esfuerzo y la colaboración de nuestra comunidad, hemos logrado impulsar la producción local de productos lácteos de alta calidad. Ahora, orgullosamente ofrecemos una variedad de quesos artesanales, yogures frescos, leche pura y nuestro exclusivo “Pájaro Azul”. Cada producto refleja el compromiso y la dedicación de nuestros miembros, quienes trabajan incansablemente para brindar lo mejor a nuestras familias y vecinos. ¡Juntos, estamos construyendo un futuro más sostenible y saludable para todos! Puedes apoyarnos con la compra de los mismos, ¡Estaremos muy gustosos de atenderte!",
-              style: TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 20),
-
-            // Sección de productos
-            _buildProductSection(
-              "Quesos Artesanales",
-              "Nuestros quesos artesanales son elaborados con leche fresca de la más alta calidad. Disponibles en varios sabores: mozzarella, orégano y ají. Cada queso es una obra maestra de sabor y tradición.",
-              "assets/images/QUESO.jpg",
-              "https://github.com/JoshSy01/T10-ProgressTeam",
-            ),
-            const SizedBox(height: 20),
-            _buildProductSection(
-              "Leche",
-              "Leche pura y fresca, ordeñada diariamente de nuestras vacas criadas en los verdes pastos andinos. Rica en nutrientes y con un sabor inigualable.",
-              "assets/images/LECHE.jpg",
-              "https://github.com/ericklasluisa/GestionEstudiantes",
-            ),
-            const SizedBox(height: 20),
-            _buildProductSection(
-              "Yogurt Natural",
-              "Yogurt cremoso y delicioso, elaborado artesanalmente con nuestra leche fresca. Disponible en varios sabores naturales, sin conservantes artificiales.",
-              "assets/images/YOGURT.jpg",
-              "https://github.com/LeonardoYaranga/BananaCocktailsTiendaOnlineGrupo4",
-            ),
-            const SizedBox(height: 20),
-            _buildProductSection(
-              "Pájaro Azul",
-              "Nuestra bebida tradicional, destilada artesanalmente siguiendo recetas ancestrales. Un verdadero tesoro de la cultura ecuatoriana.",
-              "assets/images/PAZUL.jpg",
-              "https://github.com/LeonardoYaranga/ReactBananaCocktailsGrupo4",
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  // Widget para cada producto
-  Widget _buildProductSection(
-      String title, String description, String imagePath, String link) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Image.asset(imagePath, height: 200, fit: BoxFit.cover),
-            const SizedBox(height: 10),
-            Text(
-              title,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              description,
-              style: const TextStyle(fontSize: 16),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 10),
-            // Enlace para más información
-            InkWell(
-              onTap: () {
-                // Abre el enlace en el navegador
-                // Puedes usar un paquete como url_launcher para abrir los enlaces en un navegador
-                print("Abriendo $link");
-              },
-              child: const Icon(
-                Icons.link,
-                size: 30,
-                color: Colors.blue,
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                "  Nuestros Productos",
+                style: TextStyle(color: Colors.black),
               ),
             ),
           ],
         ),
       ),
+      body: NotificationListener<ScrollNotification>(
+        onNotification: (scrollNotification) {
+          return false;
+        },
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              
+
+              Container(
+                color: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Actividades Económicas",
+                      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
+                    ),
+                    const Text(
+                      "Nuestros Productos",
+                      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 255, 102, 0)),
+                    ),
+                    const SizedBox(height: 15),
+                    const Text(
+                      "Gracias al esfuerzo y la colaboración de nuestra comunidad, hemos logrado impulsar la producción local de productos lácteos de alta calidad. Ahora, orgullosamente ofrecemos una variedad de quesos artesanales, yogures frescos, leche pura y nuestro exclusivo “Pájaro Azul”. Cada producto refleja el compromiso y la dedicación de nuestros miembros, quienes trabajan incansablemente para brindar lo mejor a nuestras familias y vecinos. ¡Juntos, estamos construyendo un futuro más sostenible y saludable para todos! Puedes apoyarnos con la compra de los mismos, ¡Estaremos muy gustosos de atenderte!s",
+                      style: TextStyle(fontSize: 18, color: Colors.black),
+                    ),
+                    const SizedBox(height: 25),
+                    
+
+                    Column(
+                      children: [
+                        InteractiveImageCard(
+                          imagePath: "assets/images/QUESO.jpg",
+                          title: "Quesos Artesanales",
+                          description: "Nuestros quesos artesanales son elaborados con leche fresca de la más alta calidad. Disponibles en varios sabores: mozzarella, orégano y ají. Cada queso es una obra maestra de sabor y tradición. ¡Pregunta por ellos!",
+                        ),
+                        const SizedBox(height: 15),
+                        InteractiveImageCard(
+                          imagePath: "assets/images/LECHE.jpg",
+                          title: "Leche",
+                          description: "Leche pura y fresca, ordeñada diariamente de nuestras vacas criadas en los verdes pastos andinos. Rica en nutrientes y con un sabor inigualable.",
+                        ),
+                        const SizedBox(height: 15),
+                        InteractiveImageCard(
+                          imagePath: "assets/images/YOGURT.jpg",
+                          title: "Yogurt Natural",
+                          description: "Yogurt cremoso y delicioso, elaborado artesanalmente con nuestra leche fresca. Disponible en varios sabores naturales, sin conservantes artificiales.",
+                        ),
+                        const SizedBox(height: 15),
+                        InteractiveImageCard(
+                          imagePath: "assets/images/PAZUL.jpg",
+                          title: "Pájaro Azul",
+                          description: "Nuestra bebida tradicional, destilada artesanalmente siguiendo recetas ancestrales. Un verdadero tesoro de la cultura ecuatoriana.",
+                        ),
+                        const SizedBox(height: 15),
+                        InteractiveImageCard(
+                          imagePath: "assets/images/Carrito.jpg",
+                          title: "Carrito de Compras",
+                          description: "Nuestra Tienda Online está por venir, ¡Estamos trabajando en ello! Mientras tanto, puedes contactarnos para realizar tu pedido.",
+                        ),
+                        const SizedBox(height: 25),
+                        
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              
+
+            ],
+          ),
+        ),
+      ),
     );
   }
+
+  
+
 }

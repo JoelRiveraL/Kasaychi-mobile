@@ -21,7 +21,27 @@ class _MultimediaSectionState extends State<MultimediaSection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Our Multimedia')),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 242, 242, 242),
+        toolbarHeight: 85,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset(
+              "assets/images/KasaychiKunapak.png",
+              width: 65,
+              height: 65,
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                "  Nuestra Multimedia",
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -30,19 +50,20 @@ class _MultimediaSectionState extends State<MultimediaSection> {
             children: [
               // Título de la sección
               const Text(
-                'Our Multimedia',
+                'Nuestra Multimedia',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
 
               // Video Principal
               Container(
+                
                 width: double.infinity,
                 height: 250,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: const DecorationImage(
-                    image: AssetImage('assets/images/OIP.jpeg'),
+                    image: AssetImage('assets/images/fondoLejanoCalleAlto.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -56,19 +77,19 @@ class _MultimediaSectionState extends State<MultimediaSection> {
                   scrollDirection: Axis.horizontal,
                   children: [
                     _buildThumbnail('https://www.youtube.com/embed/Ava0duwBsZo',
-                        'Bôa - Duvet (Lyrics)', 'assets/images/OIP.jpeg'),
+                        'Entrada', 'assets/images/CalleEntrada.jpg'),
                     _buildThumbnail(
                         'https://www.youtube.com/embed/3ssL8vx7Xhg?list=PLgS0SSa1anukbM0QbNBw5IMsFiBYZz7CR',
-                        'Happy and Fun Pop Music',
-                        'assets/images/OIP.jpeg'),
+                        'Viviendas',
+                        'assets/images/bg.jpg'),
+                    _buildThumbnail(
+                        'https://www.youtube.com/embed/nfmdbKeSh7I',
+                        'Escuela',
+                        'assets/images/fondoEscuela.jpg'),
                     _buildThumbnail(
                         'https://www.youtube.com/embed/nfmdbKeSh7I',
                         'Juan Luis Guerra - Las avispas',
-                        'assets/images/OIP.jpeg'),
-                    _buildThumbnail(
-                        'https://www.youtube.com/embed/nfmdbKeSh7I',
-                        'Juan Luis Guerra - Las avispas',
-                        'assets/images/OIP.jpeg'),
+                        'assets/images/childsEscuela.jpg'),
                   ],
                 ),
               ),
@@ -76,7 +97,7 @@ class _MultimediaSectionState extends State<MultimediaSection> {
 
               // Contenido secundario de multimedia
               const Text(
-                'Additional Multimedia Content',
+                'Fotos Adicionales',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
@@ -139,7 +160,7 @@ class _MultimediaSectionState extends State<MultimediaSection> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         image: const DecorationImage(
-          image: AssetImage('assets/images/OIP.jpeg'),
+          image: AssetImage('assets/images/childsEscuela.jpg'),
           fit: BoxFit.cover,
         ),
       ),
@@ -152,12 +173,12 @@ class _MultimediaSectionState extends State<MultimediaSection> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Título del Video',
+                  '.',
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  'Video',
+                  '.',
                   style: TextStyle(color: Colors.white),
                 ),
               ],

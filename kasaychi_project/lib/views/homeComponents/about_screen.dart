@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:kasaychi_project/views/homeComponents/about_screen.dart';
-import 'package:kasaychi_project/views/homeComponents/activity_screen.dart';
-import 'package:kasaychi_project/views/homeComponents/contact_screen.dart';
-import 'package:kasaychi_project/views/homeComponents/multimedia_screen.dart';
-import 'package:kasaychi_project/views/homeComponents/products_screen.dart';
-import 'package:kasaychi_project/views/homeComponents/map_screen.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:kasaychi_project/views/homeComponents/interactiveImageCard.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -83,6 +77,114 @@ class AboutScreen extends StatelessWidget {
                 ),
               ),
 
+              Container(
+                color: Color.fromARGB(255, 51, 51, 51),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Nuestra Historia",
+                      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
+                    const Text(
+                      "Orígenes y Tradiciones",
+                      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 255, 102, 0)),
+                    ),
+                    const SizedBox(height: 15),
+                    const Text(
+                      "Nuestra historia se remonta a tiempos preincaicos, cuando nuestras tierras fueron habitadas por las tribus Panzaleas y Yacotos, guerreros que resistieron tanto a los incas como a los españoles. Hoy, conservamos tradiciones como:",
+                      style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 255, 255, 255), ),
+                    ),
+                    const SizedBox(height: 25),
+
+                    Column(
+                      children: [
+                        InteractiveImageCard(
+                          imagePath: "assets/images/vestimenta.jpg",
+                          title: "Vestimenta Tradicional",
+                          description: "Se ha mantenido el uso de prendas como anacos tejidos a mano, blusas bordadas y collares de mullos.",
+                        ),
+                        const SizedBox(height: 15),
+                        InteractiveImageCard(
+                          imagePath: "assets/images/festividades.png",
+                          title: "Festividades",
+                          description: "El Inti Raymi (Fiesta del Sol), celebraciones a la Pachamama (Madre Tierra) y rituales de agradecimiento por las cosechas.",
+                        ),
+                        const SizedBox(height: 15),
+                        InteractiveImageCard(
+                          imagePath: "assets/images/sisOrganizativo.png",
+                          title: "Sistema Organizativo",
+                          description: "La organización de su gente se basa en Asambleas comunitarias y mingas para construir viviendas o cuidar cultivos.",
+                        ),
+                        const SizedBox(height: 15),
+
+                        
+
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              Container(
+                color: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Hitos Relevantes",
+                      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 255, 102, 0)),
+                    ),
+                    const SizedBox(height: 15),
+                    
+
+                    Column(
+                      children: [
+                        _buildServiceCard(
+                          FontAwesomeIcons.award,
+                          "Reconocimiento como Organización 2010",
+                          "Reconocimiento como comunidad organizada bajo el nombre Casaichis Runacunapac Tantari Inti Churi - Hombres Hijos del Sol"
+                        ),
+                        const SizedBox(height: 15),
+                        _buildServiceCard(
+                          FontAwesomeIcons.cheese,
+                          "Creación de la Quesería Comunitaria",
+                          "Fundación de Inti Churi en 1990, la primera quesería gestionada por la comunidad. Usa leche de vacas criadas en páramo y técnicas ancestrales."
+                        ),
+                        const SizedBox(height: 15),
+                        _buildServiceCard(
+                          FontAwesomeIcons.feather,
+                          "Resistencia Prehispánica (Siglos XV-XVI)",
+                          "Las tribus Panzaleas y Yacotos, antecesoras de la comunidad, resistieron activamente la invasión inca y española, defendiendo su territorio y autonomía"
+                        ),
+                        const SizedBox(height: 15),
+
+                        _buildServiceCard(
+                          FontAwesomeIcons.school,
+                          "Unificación Escolar (Década de 1990)",
+                          "Fusión de cuatro escuelas en una escuela pluridocente comunitaria, priorizando la educación bilingüe (kichwa-español) y la participación activa de padres"
+                        ),
+                        const SizedBox(height: 15),
+                        _buildServiceCard(
+                          FontAwesomeIcons.userGraduate,
+                          "Tesis Universitaria y Plan de Revitalización",
+                          "Investigación de la Universidad Estatal de Bolívar que impulsó el Plan de Revitalización Cultural, enfocado en fortalecer la identidad y fomentar el turismo comunitario"
+                        ),
+                        const SizedBox(height: 15),
+                        _buildServiceCard(
+                          FontAwesomeIcons.seedling,
+                          "Proyectos Recientes (2020-actualidad)",
+                          "Se han planteado proyectos como la Reforestación de Páramos, Talleres culturales y Alianzas Académicas, de manera que se pueda profundizar la identidad y crear interés"
+                        ),
+                        const SizedBox(height: 30),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
             ],
           ),
         ),
@@ -90,60 +192,7 @@ class AboutScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSocialIcon(IconData icon, String url) {
-    return InkWell(
-      onTap: () => _launchURL(url),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(color: const Color.fromARGB(255, 255, 102, 0), width: 2),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              blurRadius: 5,
-              spreadRadius: 2,
-            ),
-          ],
-        ),
-        padding: const EdgeInsets.all(10),
-        child: FaIcon(
-          icon,
-          size: 30,
-          color: const Color.fromARGB(255, 255, 102, 0),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildInfoCard(String imagePath, String title, String description) {
-    return Card(
-      color: Colors.white,
-      elevation: 5,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            Image.asset(imagePath, height: 110, fit: BoxFit.cover, ),
-            const SizedBox(height: 10),
-            Text(
-              title,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 255, 102, 0)),
-            ),
-            const SizedBox(height: 5),
-            Text(
-              description,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 16),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  
 
   Widget _buildServiceCard(IconData icon, String title, String description) {
     return Padding(
@@ -164,7 +213,7 @@ class AboutScreen extends StatelessWidget {
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 255, 102, 0),
                 ),
@@ -174,7 +223,7 @@ class AboutScreen extends StatelessWidget {
               Text(
                 description,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 14, color: Colors.black),
+                style: const TextStyle(fontSize: 16, color: Colors.black),
               ),
               const SizedBox(height: 15),
 
@@ -186,92 +235,8 @@ class AboutScreen extends StatelessWidget {
   }
 
 
-  Widget _buildGallerySection() {
-    List<Map<String, String>> images = [
-      {'path': 'assets/images/mision.jpg', 'title': 'Miembros de la Comunidad', 'desc': 'Reunión de miebros en el campo Casaichis San Antonio'},
-      {'path': 'assets/images/fondoLejanoCalle.jpg', 'title': 'Paisaje Comunidad Kasaychi', 'desc': 'Imagen del paisaje de llegada a la comunidad'},
-      {'path': 'assets/images/fondoLejanoCalle3.jpg', 'title': 'Paisaje UEIB Inti Churi', 'desc': 'Paisaje con escuela bilingüe de la comunidad'},
-      {'path': 'assets/images/childsEscuela.jpg', 'title': 'Niños en la escuela UEIB Inti Churi', 'desc': 'Comunidad Estudiantil Kasaychi disfrutando evento'},
-      {'path': 'assets/images/fondoEscuela.jpg', 'title': 'Escuela', 'desc': 'Escuela Vista desde un plano 3/4'},
-      {'path': 'assets/images/AulasEscuela.jpg', 'title': 'Viviendas de la Comunidad', 'desc': 'Viviendas de la comunidad, aledañas a la escuela'},
-      {'path': 'assets/images/childsInWoodPlatform.jpg', 'title': 'Niños en Centro Ecoturistico TINKU ', 'desc': 'Estudiantes disfrutando salida educativa'},
-    ];
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: images.map((image) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 10), 
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: SizedBox(
-                height: 180, 
-                width: double.infinity, 
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Image.asset(
-                        image['path']!,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      height: 55, 
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.6),
-                          borderRadius: const BorderRadius.vertical(bottom: Radius.circular(12)),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              image['title']!,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                              ),
-                            ),
-                            Text(
-                              image['desc']!,
-                              style: const TextStyle(
-                                color: Colors.white70,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          );
-        }).toList(),
-      ),
-    );
-  }
 
 
 
 
-
-
-
-
-  Future<void> _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-      throw 'No se pudo abrir $url';
-    }
-  }
 }
