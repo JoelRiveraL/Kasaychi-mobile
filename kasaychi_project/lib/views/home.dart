@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ActivitiesScreen())),
+                      builder: (context) => const ActivitiesScreen(siteId: 'kasaychi_actividades'))),
             ),
             ListTile(
               leading: const Icon(Icons.shopping_bag, color: Colors.black), // Icono de productos
@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ProductsScreen())),
+                      builder: (context) => const ProductsScreen(siteId:'kasaychi_productos'))),
             ),
             ListTile(
               leading: const Icon(Icons.photo_album, color: Colors.black), // Icono de multimedia

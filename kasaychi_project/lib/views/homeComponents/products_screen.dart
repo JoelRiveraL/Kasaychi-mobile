@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kasaychi_project/views/homeComponents/interactiveImageCard.dart';
-
+import 'package:kasaychi_project/widgets/reviews_widget.dart'; // Importa el widget de reseñas
 class ProductsScreen extends StatelessWidget {
-  const ProductsScreen({super.key});
+   final String siteId; // Añadimos siteId como parámetro
+
+  const ProductsScreen({super.key, required this.siteId}); // Requiere siteId 
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +95,11 @@ class ProductsScreen extends StatelessWidget {
                           description: "Nuestra Tienda Online está por venir, ¡Estamos trabajando en ello! Mientras tanto, puedes contactarnos para realizar tu pedido.",
                         ),
                         const SizedBox(height: 25),
-                        
+                        Container(
+                color: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+                child: ReviewsWidget(siteId: siteId), // Añadimos el widget de reseñas
+              ),
                       ],
                     ),
                   ],
